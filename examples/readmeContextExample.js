@@ -1,16 +1,5 @@
-# string-parsing-tools
+const Context = require("../Context");
 
-This is a JavaScript for building better string parsers. Everything included has
-JSDoc comments for types.
-
-## Context.js
-
-Helps you use sticky regexes to break down strings. Example:
-[parseJSON](examples/parseJSON.js).
-
-Usage:
-
-```javascript
 // Create a context
 const context = new Context(" c[1,2,3]");
 
@@ -60,12 +49,4 @@ if (context.matchString("]") === null) {
 
 console.log(ints);
 
-// Check if we've parsed all characters in context.
 if (!context.atEnd()) throw new Error(`Expected EOF.`);
-```
-
-## ABNF.js
-
-Converts a subset of ABNF to regex strings. Requires that rules are specified
-before they are referenced and cannot support recursive rules. Example:
-[parseHTTPDate](examples/parseHTTPDate-js).
