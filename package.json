@@ -1,0 +1,8 @@
+{
+	"name": "string-parsing-tools",
+	"description": "Tools for building better string parsers in JavaScript.",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "Dae Catt",
+	"license": "ISC"
+}
