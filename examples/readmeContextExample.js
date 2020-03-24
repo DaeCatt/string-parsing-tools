@@ -24,7 +24,7 @@ if (groupMatch !== null) {
 		// Named group "a" was matched.
 	} else if (groupMatch.has(2)) {
 		console.log("matched b");
-		// Named group "b" was matched.
+		// Numbered group 2 was matched.
 	} else {
 		// No named groups were matched.
 		console.log("matched c");
@@ -49,4 +49,5 @@ if (context.matchString("]") === null) {
 
 console.log(ints);
 
+// Ensure we've parsed the entire string.
 if (!context.atEnd()) throw new Error(`Expected EOF.`);

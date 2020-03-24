@@ -1,2 +1,3 @@
 *.abnf
+*.code-workspace
 examples/
