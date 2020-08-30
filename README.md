@@ -68,4 +68,4 @@ if (!context.atEnd()) throw new Error(`Expected EOF.`);
 
 Converts a subset of ABNF to regex strings. Requires that rules are specified
 before they are referenced and cannot support recursive rules. Example:
-[parseHTTPDate](examples/parseHTTPDate-js).
+[parseHTTPDate](examples/parseHTTPDate.js).
