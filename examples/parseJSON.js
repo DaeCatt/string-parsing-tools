@@ -1,7 +1,7 @@
 /**
  * A complete implentation of a JSON parser
  */
-const Context = require("../Context");
+const Context = require("../index");
 
 const WHITE_SPACE = /[ \t\r\n]+/y;
 const NUMBER_RE = /-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[Ee][+-]?[0-9]+)?/y;
@@ -15,11 +15,11 @@ const ESCAPE_CHAR_MAP = new Map(
 		f: "\f",
 		n: "\n",
 		r: "\r",
-		t: "\t"
+		t: "\t",
 	})
 );
 
-const parseJSONObject = context => {
+const parseJSONObject = (context) => {
 	if (context.matchString("{") === null) return null;
 
 	const object = Object.create(null);
@@ -42,7 +42,7 @@ const parseJSONObject = context => {
 	return object;
 };
 
-const parseJSONArray = context => {
+const parseJSONArray = (context) => {
 	if (context.matchString("[") === null) return null;
 
 	const array = [];
@@ -59,7 +59,7 @@ const parseJSONArray = context => {
 	return array;
 };
 
-const parseJSONString = context => {
+const parseJSONString = (context) => {
 	if (context.matchString('"') === null) return null;
 	let string = "";
 	let match;
@@ -82,13 +82,13 @@ const parseJSONString = context => {
 	return string;
 };
 
-const parseJSONNumber = context => {
+const parseJSONNumber = (context) => {
 	const match = context.match(NUMBER_RE);
 	if (match === null) return null;
 	return parseFloat(match.get(0));
 };
 
-const parseJSONValue = context => {
+const parseJSONValue = (context) => {
 	if (context.matchString("null") !== null) return null;
 	if (context.matchString("false") !== null) return false;
 	if (context.matchString("true") !== null) return true;
@@ -108,7 +108,7 @@ const parseJSONValue = context => {
 	throw new Error("Expected value.");
 };
 
-const parseJSONFromString = string => {
+const parseJSONFromString = (string) => {
 	const context = new Context(string);
 
 	// Trim whitespace at start of document

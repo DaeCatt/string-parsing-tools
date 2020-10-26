@@ -1,14 +1,8 @@
 # string-parsing-tools
 
-This is a JavaScript for building better string parsers. Everything included has
-JSDoc comments for types.
+This is a JavaScript module to help build readable and re-usable string parser.
 
-## Context.js
-
-Helps you use sticky regexes to break down strings. Example:
-[parseJSON](examples/parseJSON.js).
-
-Usage:
+## Usage:
 
 ```javascript
 // Create a context
@@ -63,9 +57,3 @@ console.log(ints);
 // Ensure we've parsed the entire string.
 if (!context.atEnd()) throw new Error(`Expected EOF.`);
 ```
-
-## ABNF.js
-
-Converts a subset of ABNF to regex strings. Requires that rules are specified
-before they are referenced and cannot support recursive rules. Example:
-[parseHTTPDate](examples/parseHTTPDate.js).

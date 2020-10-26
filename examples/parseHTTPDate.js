@@ -2,8 +2,8 @@
  * A simple HTTP Date Parser
  */
 
-const Context = require("../Context");
-const ABNF = require("../ABNF");
+const Context = require("../index");
+const ABNF = require("./ABNF");
 
 const MONTHS = "JAN/FEB/MAR/APR/MAY/JUN/JUL/AUG/SEP/OCT/NOV/DEC".split("/");
 const rules = ABNF`
@@ -23,7 +23,7 @@ for (const [name, reString] of rules) re.set(name, new RegExp(reString, "y"));
 // prettier-ignore
 const DATE = "day_, _date_ _month_ _year_ _hour_:_minute_:_second_ GMT".split("_");
 
-const parseHTTPDate = string => {
+const parseHTTPDate = (string) => {
 	const context = new Context(string);
 	const values = {};
 	for (const token of DATE) {

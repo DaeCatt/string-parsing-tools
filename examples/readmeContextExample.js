@@ -1,4 +1,4 @@
-const Context = require("../Context");
+const Context = require("../index");
 
 // Create a context
 const context = new Context(" c[1,2,3]");
