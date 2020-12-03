@@ -1,2 +1,4 @@
 *.abnf
 *.code-workspace
+examples/testParseJSON.js
+examples/test_parsing/

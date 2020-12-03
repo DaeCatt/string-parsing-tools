@@ -5,7 +5,7 @@ const Context = require("../index");
 
 const WHITE_SPACE = /[ \t\r\n]+/y;
 const NUMBER_RE = /-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[Ee][+-]?[0-9]+)?/y;
-const STRING_CONTENT_RE = /[^"\\]|\\(?<escape>["\\\/bfnrt]|u[0-9A-Fa-f]{4})/y;
+const STRING_CONTENT_RE = /[^"\\\x00-\x1f]|\\(?<escape>["\\\/bfnrt]|u[0-9A-Fa-f]{4})/y;
 const ESCAPE_CHAR_MAP = new Map(
 	Object.entries({
 		'"': '"',
@@ -29,6 +29,7 @@ const parseJSONObject = (context) => {
 	do {
 		context.match(WHITE_SPACE);
 		const name = parseJSONString(context);
+		if (name === null) throw new Error(`Expected object key string.`);
 		context.match(WHITE_SPACE);
 		if (context.matchString(":") === null) throw new Error(`Expected ":".`);
 
@@ -121,3 +122,5 @@ const parseJSONFromString = (string) => {
 	if (!context.atEnd()) throw new Error("Invalid JSON document.");
 	return result;
 };
+
+module.exports = parseJSONFromString;
